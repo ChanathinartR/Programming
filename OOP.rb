@@ -1,0 +1,64 @@
+class Person
+    attr_accessor :name, :age, :sex, :height, :weight, :x #getter and setter
+    def initialize(name, age, sex)
+        @name = name #@@instance variable,@name is private
+        @age = age
+        @sex = sex
+        @height = 160.0
+        @weight = 50.0
+        @x = 0
+    end
+    def WalkAhead(distance=0)
+        @x += distance
+    end
+    def CanDrink
+        @age > 20
+    end
+    def to_s #override to_s method
+        "#{@name}[#{@age}]"
+    end
+end
+p1 = Person.new("Eve", 19, "female")
+p1.height = 160
+p1.weight = 199
+p1.WalkAhead(10)
+puts "walk ahead = #{p1.x}"
+
+if p1.CanDrink
+  puts "#{p1.name} can drink."
+else
+  puts "#{p1.name} cannot drink."
+end
+
+puts p1.to_s
+
+class Person
+    attr_accessor :name, :age, :sex, :height, :weight, :x
+    def initialize(name, age, sex)
+        @name = name
+        @age = age
+        @sex = sex
+        @height = 160.0
+        @weight = 50.0
+        @x = 0
+    end
+    def WalkAhead(*args)
+        distance = args[0].nil? ? 0 : args[0] #nil->0, not nil->args[0]
+        @x += distance
+        puts "#{@name} walked ahead #{@x} meters."
+    end
+    def CanDrink
+        @age > 20
+    end
+    def to_s #override to_s method
+        "#{@name}[#{@age}]"
+    end
+    def turnLeft
+        puts "#{@name} turned left"
+    end
+    def turnRight
+        puts "#{@name} turned right"
+    end
+end
+
+
